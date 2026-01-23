@@ -8,6 +8,7 @@ import { WhyChooseUs } from "@/components/sections/WhyChooseUs";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { Contact } from "@/components/sections/Contact";
 import { Footer } from "@/components/layout/Footer";
+import { AIChatbot } from "@/components/AIChatbot";
 
 const Index = () => {
   return (
@@ -24,6 +25,7 @@ const Index = () => {
         <Contact />
       </main>
       <Footer />
+      <AIChatbot />
     </div>
   );
 };

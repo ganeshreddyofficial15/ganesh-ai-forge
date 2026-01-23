@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Link } from "react-router-dom";
 
 const navLinks = [
   { name: "Home", href: "#home" },
@@ -77,12 +78,21 @@ export function Navbar() {
 
             {/* CTA Buttons */}
             <div className="hidden lg:flex items-center gap-4">
-              <Button variant="ghost" size="sm">
+              <Button 
+                variant="ghost" 
+                size="sm"
+                onClick={() => {
+                  const chatButton = document.querySelector('[class*="fixed bottom-6 right-6"]') as HTMLButtonElement;
+                  if (chatButton) chatButton.click();
+                }}
+              >
                 Talk to AI
               </Button>
-              <Button variant="futuristic" size="sm">
-                Get Started
-              </Button>
+              <Link to="/dashboard">
+                <Button variant="futuristic" size="sm">
+                  Get Started
+                </Button>
+              </Link>
             </div>
 
             {/* Mobile Menu Button */}
@@ -126,12 +136,22 @@ export function Navbar() {
                   </motion.a>
                 ))}
                 <div className="flex flex-col gap-3 pt-4 border-t border-border">
-                  <Button variant="outline" className="w-full">
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => {
+                      setIsMobileMenuOpen(false);
+                      const chatButton = document.querySelector('[class*="fixed bottom-6 right-6"]') as HTMLButtonElement;
+                      if (chatButton) chatButton.click();
+                    }}
+                  >
                     Talk to AI
                   </Button>
-                  <Button variant="futuristic" className="w-full">
-                    Get Started
-                  </Button>
+                  <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Button variant="futuristic" className="w-full">
+                      Get Started
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </div>
